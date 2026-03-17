@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Drewski Photos</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=Montserrat:wght@700;800&display=swap"
+    rel="stylesheet">
+  <script type="module" crossorigin src="/assets/main-BFIuvVSH.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-D4ShNASB.css">
+</head>
+
+<body class="page-contact">
+  <header class="global-header solid-header">
+    <div class="logo">DREWSKI<span>PHOTOS</span></div>
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/gallery.html">GALLERY</a>
+      <a href="/about.html">ABOUT</a>
+      <a href="/contact.html" class="active">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="content-wrapper centered-layout">
+    <section class="contact-container">
+      <div class="contact-header">
+        <h1>LET'S GET TO WORK.</h1>
+        <p class="contact-subtext">I’m a photographer and videographer with a focus on sports and storytelling. Reach
+          out to discuss availability, rates, and your next shoot.</p>
+      </div>
+
+      <!-- Note: Replace "YOUR_FORMSPREEE_ENDPOINT" with an actual endpoint from https://formspree.io/ if you want a backend service, or use mailto: for local clients. We'll use Formspree as standard for static sites -->
+      <form class="utilitarian-form" action="https://formspree.io/f/xlgpovvp" method="POST">
+        <div class="form-group">
+          <label for="name">NAME</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="project">EVENT / PROJECT TYPE</label>
+          <select id="project" name="project">
+            <option value="action">In-game Action</option>
+            <option value="portrait">Athlete Portrait</option>
+            <option value="campaign">Brand Campaign</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">MESSAGE</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn ghost-btn submit-btn">SEND INQUIRY</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="global-footer">
+    <div class="footer-content">
+      <div class="socials">
+        <a href="https://www.instagram.com/drewski.photo/" target="_blank" aria-label="Instagram" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+      <div class="contact-email">
+        <button class="copy-email-btn" data-email="andrew.christopher.floyd@gmail.com">
+          andrew.christopher.floyd@gmail.com <span class="copy-msg"></span>
+        </button>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
