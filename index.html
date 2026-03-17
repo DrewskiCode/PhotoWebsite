@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drewski Photos | Sports Photography</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="global-header">
+      <div class="logo">DREWSKI<span>PHOTOS</span></div>
+      <nav>
+        <a href="/" class="active">HOME</a>
+        <a href="/gallery.html">GALLERY</a>
+        <a href="/about.html">ABOUT</a>
+        <a href="/contact.html">CONTACT</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section split-hero">
+        <div class="hero-content left-align">
+          <h1 class="hero-headline">Photographer based in Southern California</h1>
+          <p class="hero-subline">With a passion for creating colorful images.</p>
+          <a href="/gallery.html" class="btn ghost-btn">VIEW PORTFOLIO</a>
+        </div>
+        <div class="hero-image-container">
+            <img src="/assets/start3.jpg" alt="Drew Floyd - Photographer" class="hero-portrait" decoding="async" fetchpriority="high">
+        </div>
+      </section>
+      
+      <section class="gallery-preview">
+        <h2>LATEST WORK</h2>
+        <div class="masonry-grid" id="latest-work-grid">
+           <!-- Gallery grid injected via JS or written in Phase 2 -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="global-footer">
+      <div class="footer-content">
+        <div class="socials">
+          <a href="https://www.instagram.com/drewski.photo/" target="_blank" aria-label="Instagram" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </div>
+        <div class="contact-email">
+          <button class="copy-email-btn" data-email="andrew.christopher.floyd@gmail.com">
+            andrew.christopher.floyd@gmail.com <span class="copy-msg"></span>
+          </button>
+        </div>
+      </div>
+    </footer>
+    
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
