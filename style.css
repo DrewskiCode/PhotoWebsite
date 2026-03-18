@@ -496,6 +496,151 @@ a {
   margin-top: 16px;
 }
 
+/* ==========================================================================
+   AWARDS PAGE
+   ========================================================================== */
+
+.awards-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.awards-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.awards-header h1 {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.awards-subtext {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.award-item {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--concrete-gray);
+}
+
+.award-item:last-child {
+  border-bottom: none;
+}
+
+.award-year {
+  font-family: var(--font-accent);
+  font-size: 2rem;
+  color: var(--adrenaline-red);
+  min-width: 100px;
+}
+
+.award-details h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: var(--onyx-black);
+}
+
+.award-details p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   FILMS PAGE
+   ========================================================================== */
+
+.align-top {
+  align-items: flex-start;
+  padding-top: 120px;
+}
+
+.films-container {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.films-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.films-header h1 {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.films-subtext {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.youtube-link {
+  font-size: 0.8rem;
+  padding: 12px 24px;
+}
+
+.films-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 48px;
+}
+
+.film-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background-color: var(--concrete-gray); /* Loading placeholder */
+  border: 1px solid var(--concrete-gray);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%);
+  transition: filter 300ms ease-out;
+}
+
+.video-wrapper iframe:hover {
+  filter: grayscale(0%);
+}
+
+.film-details h2 {
+  font-size: 1.25rem;
+  color: var(--onyx-black);
+  margin-bottom: 8px;
+}
+
+.film-details p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #666;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .about-container {
@@ -552,6 +697,19 @@ a {
   }
   
   .capabilities ul {
+    grid-template-columns: 1fr;
+  }
+
+  .award-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .award-year {
+    font-size: 1.5rem;
+  }
+
+  .films-grid {
     grid-template-columns: 1fr;
   }
 
