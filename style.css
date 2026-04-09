@@ -345,99 +345,166 @@ a {
 /* ==========================================================================
    GRADS PAGE
    ========================================================================== */
-.grads-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 64px;
-  border-bottom: 1px solid var(--concrete-gray);
-  padding-bottom: 24px;
+.grads-intro {
+  text-align: center;
+  margin-bottom: 96px;
+  margin-top: 32px;
 }
 
-.grads-header h1 {
+.grads-intro h1 {
   font-size: 3rem;
-  line-height: 1;
-  flex: 1;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
 }
 
-.book-now-btn {
-  background-color: var(--adrenaline-red);
-  color: var(--gallery-white);
-  padding: 16px 32px;
-  font-family: var(--font-primary);
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: all 150ms ease-out;
-  text-transform: uppercase;
-  border: none;
-  display: inline-block;
-}
-
-.book-now-btn:hover {
+.divider {
+  width: 48px;
+  height: 1px;
   background-color: var(--onyx-black);
-  transform: translateY(-2px);
+  margin: 24px auto 32px;
 }
 
-.cta-button {
+.intro-text {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--metallic-silver);
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+
+.book-cta {
   display: inline-block;
-  padding: 16px 32px;
+  padding: 14px 32px;
   background-color: var(--adrenaline-red);
   color: var(--gallery-white);
   font-family: var(--font-primary);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all 150ms ease-out;
+  transition: all 200ms ease-out;
+  border: 1px solid var(--adrenaline-red);
 }
 
-.cta-button:hover {
-  background-color: var(--onyx-black);
-  transform: translateY(-2px);
-}
-
-.grads-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: 10px;
-  gap: 24px;
-  justify-items: center;
-}
-
-.grads-gallery-grid .grid-item {
-  width: 100%;
-  grid-row-end: span 30;
-  overflow: hidden;
-  position: relative;
-  padding: 12px;
+.book-cta:hover {
   background-color: var(--gallery-white);
-  border: 1px solid var(--concrete-gray);
+  color: var(--adrenaline-red);
 }
 
-.grads-gallery-grid .grid-item.tall {
-  grid-row-end: span 45;
+/* Dual Carousel Container */
+.dual-carousel-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 96px;
 }
 
-.grads-gallery-grid .grid-item.wide {
-  grid-row-end: span 25;
-  grid-column-end: span 2;
+.carousel-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
-.grads-gallery-grid .grid-item img.art-image {
+.carousel-label {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.carousel-viewport {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--concrete-gray);
+  aspect-ratio: 3 / 4;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 400ms ease-out;
+  height: 100%;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: filter 150ms ease-out, transform 150ms ease-out;
 }
 
-.grads-gallery-grid .grid-item:hover img.art-image {
-  filter: brightness(1.1) contrast(110%);
-  transform: scale(1.03);
+.carousel-control {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  color: var(--onyx-black);
+  padding: 8px 12px;
+  transition: color 150ms ease-out;
+  letter-spacing: 0.05em;
 }
+
+.carousel-control:hover {
+  color: var(--adrenaline-red);
+}
+
+.carousel-control.prev {
+  order: -1;
+}
+
+.carousel-counter {
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.1em;
+  color: var(--metallic-silver);
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dual-carousel-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grads-intro h1 {
+    font-size: 2rem;
+  }
+
+  .carousel-label {
+    font-size: 1.2rem;
+  }
+
+  .dual-carousel-container {
+    gap: 32px;
+    margin-bottom: 64px;
+  }
+
+  .carousel-viewport {
+    aspect-ratio: 2 / 3;
+  }
+}
+
 
 
 /* ==========================================================================

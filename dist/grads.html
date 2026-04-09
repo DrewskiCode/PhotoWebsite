@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/main-BFi-KUlL.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-BJjFaG59.css">
+    <script type="module" crossorigin src="/assets/main-C0tvfUQl.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-D4HeJOEZ.css">
   </head>
   <body class="page-grads">
     <header class="global-header solid-header">
@@ -26,50 +26,53 @@
     </header>
 
     <main class="content-wrapper">
-      <section class="grads-header">
+      <section class="grads-intro">
         <h1>GRAD PHOTOS</h1>
-        <a href="/contact.html" class="cta-button book-now-btn">BOOK NOW</a>
+        <div class="divider"></div>
+        <p class="intro-text">PREVIOUS CLIENTS</p>
+        <a href="/contact.html" class="book-cta">BOOK YOUR SESSION</a>
       </section>
 
-      <section class="grads-gallery-grid">
-        <div class="grid-item">
-            <img src="/assets/Bri1.jpg" alt="Bri Grad Photo 1" loading="lazy" decoding="async" class="art-image">
+      <section class="dual-carousel-container">
+        <!-- Bri Carousel -->
+        <div class="carousel-wrapper">
+          <div class="carousel-label">Bri</div>
+          <div class="carousel">
+            <button class="carousel-control prev" data-carousel="bri">←</button>
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="bri-track">
+                <div class="carousel-slide"><img src="/assets/Bri1.jpg" alt="Bri 1" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Bri2.jpg" alt="Bri 2" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Bri3.jpg" alt="Bri 3" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Bri4.jpg" alt="Bri 4" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Bri5.jpg" alt="Bri 5" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+            <button class="carousel-control next" data-carousel="bri">→</button>
+          </div>
+          <div class="carousel-counter" id="bri-counter">1 / 5</div>
         </div>
-        <div class="grid-item tall">
-            <img src="/assets/Bri2.jpg" alt="Bri Grad Photo 2" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item">
-            <img src="/assets/Bri3.jpg" alt="Bri Grad Photo 3" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item wide">
-            <img src="/assets/Bri4.jpg" alt="Bri Grad Photo 4" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item tall">
-            <img src="/assets/Bri5.jpg" alt="Bri Grad Photo 5" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item">
-            <img src="/assets/Jesse1.jpg" alt="Jesse Grad Photo 1" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item">
-            <img src="/assets/Jesse2.jpg" alt="Jesse Grad Photo 2" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item tall">
-            <img src="/assets/Jesse3.jpg" alt="Jesse Grad Photo 3" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item wide">
-            <img src="/assets/Jesse4.jpg" alt="Jesse Grad Photo 4" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item">
-            <img src="/assets/Jesse5.jpg" alt="Jesse Grad Photo 5" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item">
-            <img src="/assets/Jesse6.jpg" alt="Jesse Grad Photo 6" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item tall">
-            <img src="/assets/Jesse7.jpg" alt="Jesse Grad Photo 7" loading="lazy" decoding="async" class="art-image">
-        </div>
-        <div class="grid-item wide">
-            <img src="/assets/Jesse8.jpg" alt="Jesse Grad Photo 8" loading="lazy" decoding="async" class="art-image">
+
+        <!-- Jesse Carousel -->
+        <div class="carousel-wrapper">
+          <div class="carousel-label">Jesse</div>
+          <div class="carousel">
+            <button class="carousel-control prev" data-carousel="jesse">←</button>
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="jesse-track">
+                <div class="carousel-slide"><img src="/assets/Jesse1.jpg" alt="Jesse 1" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Jesse2.jpg" alt="Jesse 2" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Jesse3.jpg" alt="Jesse 3" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Jesse4.jpg" alt="Jesse 4" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Jesse5.jpg" alt="Jesse 5" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Jesse6.jpg" alt="Jesse 6" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Jesse7.jpg" alt="Jesse 7" loading="lazy" decoding="async"></div>
+                <div class="carousel-slide"><img src="/assets/Jesse8.jpg" alt="Jesse 8" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+            <button class="carousel-control next" data-carousel="jesse">→</button>
+          </div>
+          <div class="carousel-counter" id="jesse-counter">1 / 8</div>
         </div>
       </section>
     </main>
@@ -91,5 +94,62 @@
         </div>
       </div>
     </footer>
+    <script>
+      // Carousel functionality
+      class CarouselManager {
+        constructor(name, trackId, totalSlides) {
+          this.name = name;
+          this.track = document.getElementById(trackId);
+          this.totalSlides = totalSlides;
+          this.currentIndex = 0;
+          this.updateCounter();
+        }
+
+        next() {
+          this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+          this.updateCarousel();
+        }
+
+        prev() {
+          this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+          this.updateCarousel();
+        }
+
+        updateCarousel() {
+          const offset = -this.currentIndex * 100;
+          this.track.style.transform = `translateX(${offset}%)`;
+          this.updateCounter();
+        }
+
+        updateCounter() {
+          const counter = document.getElementById(`${this.name}-counter`);
+          counter.textContent = `${this.currentIndex + 1} / ${this.totalSlides}`;
+        }
+      }
+
+      // Initialize carousels
+      const briCarousel = new CarouselManager('bri', 'bri-track', 5);
+      const jesseCarousel = new CarouselManager('jesse', 'jesse-track', 8);
+
+      // Attach event listeners
+      document.querySelectorAll('.carousel-control').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const carousel = e.target.dataset.carousel;
+          const direction = e.target.classList.contains('next') ? 'next' : 'prev';
+          
+          if (carousel === 'bri') {
+            briCarousel[direction]();
+          } else {
+            jesseCarousel[direction]();
+          }
+        });
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') briCarousel.next(); jesseCarousel.next();
+        if (e.key === 'ArrowLeft') briCarousel.prev(); jesseCarousel.prev();
+      });
+    </script>
   </body>
 </html>
