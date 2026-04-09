@@ -343,6 +343,104 @@ a {
 
 
 /* ==========================================================================
+   GRADS PAGE
+   ========================================================================== */
+.grads-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 64px;
+  border-bottom: 1px solid var(--concrete-gray);
+  padding-bottom: 24px;
+}
+
+.grads-header h1 {
+  font-size: 3rem;
+  line-height: 1;
+  flex: 1;
+}
+
+.book-now-btn {
+  background-color: var(--adrenaline-red);
+  color: var(--gallery-white);
+  padding: 16px 32px;
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 150ms ease-out;
+  text-transform: uppercase;
+  border: none;
+  display: inline-block;
+}
+
+.book-now-btn:hover {
+  background-color: var(--onyx-black);
+  transform: translateY(-2px);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: var(--adrenaline-red);
+  color: var(--gallery-white);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 150ms ease-out;
+}
+
+.cta-button:hover {
+  background-color: var(--onyx-black);
+  transform: translateY(-2px);
+}
+
+.grads-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 10px;
+  gap: 24px;
+  justify-items: center;
+}
+
+.grads-gallery-grid .grid-item {
+  width: 100%;
+  grid-row-end: span 30;
+  overflow: hidden;
+  position: relative;
+  padding: 12px;
+  background-color: var(--gallery-white);
+  border: 1px solid var(--concrete-gray);
+}
+
+.grads-gallery-grid .grid-item.tall {
+  grid-row-end: span 45;
+}
+
+.grads-gallery-grid .grid-item.wide {
+  grid-row-end: span 25;
+  grid-column-end: span 2;
+}
+
+.grads-gallery-grid .grid-item img.art-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 150ms ease-out, transform 150ms ease-out;
+}
+
+.grads-gallery-grid .grid-item:hover img.art-image {
+  filter: brightness(1.1) contrast(110%);
+  transform: scale(1.03);
+}
+
+
+/* ==========================================================================
    ABOUT PAGE
    ========================================================================== */
 .about-container {
