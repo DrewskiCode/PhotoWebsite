@@ -347,7 +347,7 @@ a {
    ========================================================================== */
 .grads-intro {
   text-align: center;
-  margin-bottom: 96px;
+  margin-bottom: 48px;
   margin-top: 32px;
 }
 
@@ -400,11 +400,13 @@ a {
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   margin-bottom: 96px;
+  align-items: start;
 }
 
 .carousel-wrapper {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .carousel-label {
@@ -412,7 +414,17 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.carousel-university {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--metallic-silver);
   margin-bottom: 24px;
+  margin-top: 0;
   text-transform: uppercase;
 }
 
@@ -421,12 +433,13 @@ a {
   align-items: center;
   gap: 24px;
   margin-bottom: 12px;
+  flex: 1;
 }
 
 .carousel-viewport {
   flex: 1;
   overflow: hidden;
-  background-color: var(--concrete-gray);
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -507,7 +520,11 @@ a {
   }
 
   .carousel-viewport {
-    aspect-ratio: 2 / 3;
+    max-height: 70vh;
+  }
+
+  .carousel-slide img {
+    max-height: 70vh;
   }
 }
 
