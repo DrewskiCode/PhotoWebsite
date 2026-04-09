@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         gallery: resolve(__dirname, 'gallery.html'),
+        grads: resolve(__dirname, 'grads.html'),
         films: resolve(__dirname, 'films.html'),
         about: resolve(__dirname, 'about.html'),
         awards: resolve(__dirname, 'awards.html'),
