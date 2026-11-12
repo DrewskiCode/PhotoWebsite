@@ -106,9 +106,15 @@ async function walk(room) {
     gallery.enable(true);
     gallery.lock();                       // the view follows the mouse from here; Esc gives the cursor back
     canvas.focus({ preventScroll: true });
+    if (mobile) {                          // phones get a guided tour: Start, then swipe from spot to spot
+      html.classList.add('tour');
+      html.classList.remove('touring');
+      gallery.tour.enter();
+    } else {
+      html.classList.add('howto');
+      setTimeout(() => html.classList.remove('howto'), 8000);
+    }
     showRoom(gallery.player.room);
-    html.classList.add('howto');
-    setTimeout(() => html.classList.remove('howto'), 8000);
   });
 }
 function leave() {
@@ -116,6 +122,8 @@ function leave() {
   shutter(() => {
     inGallery = false;
     gallery.unfocus();
+    gallery.tour.leave();
+    html.classList.remove('tour', 'touring');
     gallery.unlock();
     if (document.fullscreenElement) document.exitFullscreen?.().catch?.(() => {});
     gallery.enable(false);
@@ -185,12 +193,16 @@ document.addEventListener('click', (e) => {
   const el = e.target.closest('[data-act], #menu [data-room]');
   if (!el) return;
   const act = el.dataset.act;
-  if (!act && el.dataset.room) { gallery?.goRoom(el.dataset.room); return toggleMenu(false); }
+  if (!act && el.dataset.room) {
+    if (html.classList.contains('tour')) { html.classList.add('touring'); gallery?.tour.goRoom(el.dataset.room); } else gallery?.goRoom(el.dataset.room);
+    return toggleMenu(false);
+  }
   if (act === 'walk') { gallery?.lock(); goFullscreen(); walk(el.dataset.room); }   // both must be asked for inside the click
   else if (act === 'leave') leave();
   else if (act === 'menu') toggleMenu();
   else if (act === 'close') sheet.close();
   else if (act === 'use') gallery?.use();
+  else if (act === 'tour-start') { html.classList.add('touring', 'swipe-hint'); setTimeout(() => html.classList.remove('swipe-hint'), 5000); gallery?.tour.begin(); }
   else { toggleMenu(false); openSheet(act); }
 });
 addEventListener('keydown', (e) => { if (e.key === 'Escape' && html.classList.contains('menu-open')) toggleMenu(false); });
@@ -271,6 +283,11 @@ async function boot() {
         focus: setFocus,
         open: openSheet,
         target: setTarget,
+        tour: ({ index, count, verb }) => {
+          $('.tour-bar b').style.transform = `scaleX(${(index / (count - 1)).toFixed(4)})`;
+          prompt.hidden = !verb;                        // films, the awards list, about and the desk can be opened; prints just show their caption
+          if (verb) $('span', prompt).textContent = verb;
+        },
         key: (code) => { if (code === 'KeyM' || code === 'Tab') toggleMenu(); },
         frame: (pl) => updateMe?.(pl),
         stick: (x, y, ox, oy, on) => {
@@ -295,5 +312,6 @@ const ready = new Promise((done) => {
   const go = () => boot().then(done, done);
   if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 1200 }); else setTimeout(go, 300);
 });
+if (mobile) $('#walk .choice-note').textContent = 'A guided tour through eight rooms';
 if (location.hash === '#walk') walk();
 layoutScale();

@@ -83,6 +83,12 @@ collision, rooms).
 | Go there | click the floor | tap the floor |
 | Jump to a room | `M` for the menu, or `0`–`8` | Menu |
 
+On phones the gallery is a guided tour rather than free walking: tap **Start the
+tour**, then swipe left to move to the next spot (each room, then each print in
+it, in lap order) and right to go back. A line along the bottom shows how far
+round you are; films, the awards list, About and the contact desk show a button
+to open them. The Menu still jumps straight to any room.
+
 ## Design direction
 
 The look was reworked with [unslop](https://github.com/heydamir/unslop) by Damir
