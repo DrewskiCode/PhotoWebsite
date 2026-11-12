@@ -370,7 +370,7 @@ export class Input {
       this.stickX = ox / m; this.stickZ = -oy / m;
       this.onStick?.(t.sx, t.sy, ox, oy, true);
     } else if (t.moved > 6) {
-      this.lookX -= dx * 0.0052; this.lookY -= dy * 0.0052;
+      this.lookX += dx * 0.0052; this.lookY += dy * 0.0052;      // touch: the view turns the way the finger moves
     }
     this.onActivity();
   }

@@ -543,8 +543,18 @@ export async function createGallery(canvas, { mobile = false, onProgress = () =>
     lastTarget = key;
     events.target?.(target && rect ? { id: target.q.id, type: target.type, verb: target.verb, rect, q: target.q } : null);
   }
+  const touch = matchMedia('(pointer: coarse)').matches;
   function use() {
-    if (focus) return focusOn(null);
+    if (focus) {
+      const q = focus;
+      focusOn(null);
+      if (touch) {                           // on touch, "Step back" really does: a couple of paces away, still facing the print
+        const room = player.rayDist(player.pos, [q.n[0], q.n[2]], 30) - 0.5;
+        const d = Math.max(0, Math.min(2.2, room));
+        if (d > 0.2) player.go([player.pos[0] + q.n[0] * d, player.pos[1] + q.n[2] * d], { room: player.room, yaw: yawTo(-q.n[0], -q.n[2]), pitch: 0, speed: 4.5 });
+      }
+      return;
+    }
     const t = target || findTarget();
     if (!t) return;
     if (t.type === 'photo') focusOn(t.q);
