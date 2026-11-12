@@ -1,18 +1,15 @@
 # Technology Stack
 
-## Core Technologies
-*   **Logic & Bundling:** `Vite` + Vanilla JavaScript. (Incredibly fast, minimal overhead, perfect for pure frontend sites).
-*   **Structure:** Semantic HTML5.
-*   **Styling:** Vanilla CSS (`index.css` and scoped files) leveraging modern features (CSS Grid, Flexbox, Custom Properties for the Style Guide variables). No bloated CSS frameworks to ensure maximum performance.
+- **Build:** Vite + vanilla JavaScript. No framework and no 3D library.
+- **Rendering:** a small hand-written WebGL2 renderer (`src/gallery/`), about
+  25 KB of JavaScript gzipped.
+- **Lighting:** baked. `tools/build_gallery.py` builds the architecture in
+  Blender, path-traces sun, sky and gallery spotlights into a single lightmap,
+  and exports geometry + layout. Nothing is lit in real time; the polished
+  floors use one mirrored render pass for reflections.
+- **Images:** `tools/build_assets.mjs` (sharp) writes WebP at 640 / 1024 / 2048
+  plus one thumbnail atlas. Prints stream in by distance.
+- **Fonts:** Montserrat, Bebas Neue and Inter, self-hosted (latin subsets).
+- **Fallback:** the same content as static HTML inside `index.html` (`/#plain`).
 
-## Image Loading Strategy (Performance Priority)
-As requested, ensuring sports images load blazingly fast while looking like a high-end gallery is the top priority.
-1.  **Format:** We will deliver images in `.webp` format for a massive file size reduction without quality loss.
-2.  **Lazy Loading:** Every gallery image will use the native `loading="lazy"` attribute so the browser only loads images as the user scrolls to them.
-3.  **Responsive Images:** Using `<picture>` and `srcset` attributes to deliver smaller images to mobile devices and massive 4K images only to large gallery displays.
-4.  **Async Decoding:** Using `decoding="async"` on images to prevent large image decodes from blocking the main thread (keeps scrolling snappy).
-5.  **Preload Critical Assets:** The massive Hero image on the home page will be preloaded `<link rel="preload" as="image">` to ensure near-instant first paint.
-
-## UI/UX Animation
-*   No heavy JavaScript animation libraries (like GSAP or Framer Motion).
-*   All animations (gallery fade-ins, B&W to color snaps, ghost button hovers) will be handled entirely via **Hardware-Accelerated CSS Transitions** (`transform` and `opacity`) to maintain the "athletic snappiness" outined in the Style Guide.
+See `README.md` for the commands.

@@ -2,57 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drewski Photos | Sports Photography</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Drewski Photos — sports photography from Southern California</title>
+    <meta name="description" content="Drew Floyd photographs track, cross country and grad sessions in Southern California. Scroll the work or walk through the gallery." />
+    <meta name="theme-color" content="#141415" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23141415'/><path d='M8 13V8h5M19 8h5v5M24 19v5h-5M13 24H8v-5' fill='none' stroke='%23ededed' stroke-width='2'/><circle cx='16' cy='16' r='2.5' fill='%23e0582f'/></svg>" />
+    <meta property="og:title" content="Drewski Photos" />
+    <meta property="og:description" content="Sports photography from Southern California. Scroll the work or walk the gallery." />
+    <meta property="og:image" content="/gallery/p/nocompetition-1024.webp" />
+    <link rel="preload" as="image" href="/site/drew-760.webp" media="(max-width: 860px)" />
+    <link rel="preload" as="image" href="/site/drew.webp" media="(min-width: 861px)" />
+    <style>html,body{margin:0;background:#141415;color:#ededed}</style>
   </head>
   <body>
-    <header class="global-header">
-      <div class="logo">DREWSKI<span>PHOTOS</span></div>
-      <nav>
-        <a href="/" class="active">HOME</a>
-        <a href="/work.html">WORK</a>        <a href="/grads.html">GRADS</a>        <a href="/films.html">FILMS</a>
-        <a href="/about.html">ABOUT</a>
-        <a href="/awards.html">AWARDS</a>
-        <a href="/contact.html">CONTACT</a>
-      </nav>
-    </header>
+    <canvas id="gl" tabindex="-1" aria-hidden="true"></canvas>
 
-    <main>
-      <section class="hero-section split-hero">
-        <div class="hero-content left-align">
-          <h1 class="hero-headline">Photographer based in Southern California</h1>
-          <p class="hero-subline">With a passion for creating colorful images.</p>
-          <a href="/work.html" class="btn ghost-btn">VIEW WORK</a>
+    <div id="site">
+      <header class="bar">
+        <a class="mark" href="#top">Drewski Photos</a>
+        <nav aria-label="Sections">
+          <a href="#track">Work</a>
+          <a href="#films">Films</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="btn small" data-act="walk">Walk the gallery</button>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <h1>Sports photography from Southern California</h1>
+          <p>Track, cross country and grad sessions by Drew Floyd</p>
+          <nav class="choose" aria-label="Two ways to see the work">
+            <button class="choice" data-act="walk" id="walk">
+              <span class="choice-name">Walk the gallery</span>
+              <span class="choice-note">A first-person walk through eight rooms</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <a class="choice" href="#track">
+              <span class="choice-name">Scroll the work</span>
+              <span class="choice-note">Every photograph on one page</span>
+              <svg class="arrow down" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </a>
+          </nav>
         </div>
-        <div class="hero-image-container">
-          <img src="/assets/start3.png" alt="Drew Floyd - Photographer" class="hero-portrait" decoding="async" fetchpriority="high">
-        </div>
+        <picture class="drew">
+          <source media="(max-width: 860px)" srcset="/site/drew-760.webp" />
+          <img src="/site/drew.webp" width="1703" height="1160" alt="Drew Floyd adjusting a camera fitted with a long lens" fetchpriority="high" />
+        </picture>
       </section>
-    </main>
 
-    <footer class="global-footer">
-      <div class="footer-content">
-        <div class="socials">
-          <a href="https://www.youtube.com/@drewfilm" target="_blank" aria-label="YouTube" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-          </a>
-          <a href="https://www.instagram.com/drewski.photo/" target="_blank" aria-label="Instagram" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-        </div>
-        <div class="contact-email">
-          <button class="copy-email-btn" data-email="andrew.christopher.floyd@gmail.com">
-            andrew.christopher.floyd@gmail.com <span class="copy-msg"></span>
-          </button>
+      <!--SITE-->
+    </div>
+
+    <aside id="scale" aria-hidden="true"><div class="tape"></div><i class="index"></i></aside>
+
+    <div id="hud">
+      <button class="mark" data-act="leave" title="Back to the site">Drewski Photos</button>
+      <button class="menu-btn" data-act="menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <div id="menu" hidden>
+        <div class="plan"></div>
+        <ol class="rooms"></ol>
+        <div class="menu-links">
+          <button data-act="about">About</button>
+          <button data-act="contact">Contact</button>
+          <button data-act="leave">Back to the site</button>
         </div>
       </div>
-    </footer>
-    
-    <script type="module" src="/main.js"></script>
+      <div id="brackets" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <p id="roomname" aria-live="polite"></p>
+      <div id="caption" hidden>
+        <strong></strong><span class="kind"></span><span class="exif"></span>
+      </div>
+      <button id="prompt" data-act="use" hidden><kbd>E</kbd><span></span></button>
+      <i id="dot" aria-hidden="true"></i>
+      <p id="resume">Click to look around</p>
+      <p id="howto"><span class="for-mouse"><kbd>Mouse</kbd> look <kbd>W A S D</kbd> walk <kbd>E</kbd> inspect <kbd>M</kbd> menu <kbd>Esc</kbd> cursor</span><span class="for-drag"><kbd>Drag</kbd> look <kbd>W A S D</kbd> walk <kbd>E</kbd> inspect <kbd>M</kbd> menu</span><span class="for-touch"><kbd>Left thumb</kbd> walk <kbd>Drag</kbd> look <kbd>Tap</kbd> a print</span></p>
+      <div id="stick" hidden><i></i></div>
+    </div>
+
+    <div id="shutter" aria-hidden="true"></div>
+    <dialog id="sheet"><button class="close" data-act="close" aria-label="Close">Close</button><div class="sheet-body"></div></dialog>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

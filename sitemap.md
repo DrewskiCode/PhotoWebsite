@@ -1,28 +1,19 @@
-# Sitemap: Sports Photography Portfolio
+# Sitemap: Drewski Photos — The Lap
 
-## 1. Global Elements
-*   **Header / Navigation:** Positioned elegantly at the top. Features Brand/Name (`Montserrat`), and links to Home, Gallery, About, Contact. Kept incredibly minimal.
-*   **Footer:** Onyx Black (`#121212`) background with copyright, social links (Instagram/Twitter), and an email link.
+The site is one page with two modes: a scrolling site, and a gallery you walk through. Each former page is a section of the site and a room of the gallery.
+Rooms are numbered in lap order (counter-clockwise, like a track).
 
-## 2. Pages
+| # | Room | What's in it | Deep link | Replaces |
+|---|------|--------------|-----------|----------|
+| 00 | Start / Finish (atrium) | Title wall, portrait + bio, contact desk, start/finish line | `/#atrium`, `/#about`, `/#contact` | Home, About, Contact |
+| 01 | On Your Marks | Track & field: five prints on the home straight + "No Competition" | `/#track` | Work |
+| 02 | The Moment (rotunda) | Four hero frames under the oculus, the red baton | `/#rotunda` | Work |
+| 03 | After the Line | Cross country and portraits | `/#north` | Work |
+| 04 | After Hours (dark room) | Finale, Starfield, Golden Boy, Hunt | `/#dark` | Work |
+| 05 | Class Of | Grad sessions: Bri (USD), Jesse (Chapman) | `/#grads` | Grads |
+| 06 | Motion Pictures | Four screens, bleachers | `/#screening` | Films |
+| 07 | Accolades | Awards wall, podium, the quote | `/#awards` | Awards |
+| ∞ | The Infield | Glass courtyard, palms, the red ring — a shortcut between rooms | `/#court` | — |
 
-### `/` (Home)
-*   **Hero Section:** Full-screen (100vh) edge-to-edge striking sports photograph.
-*   **Headline Overlay:** Massive `Montserrat` typography.
-*   **Curated Gallery Preview:** An asymmetrical masonry grid (art gallery style) showing 6-8 of the absolute best shots.
-*   **CTA:** A ghost button (Adrenaline Red on hover) leading to the full gallery or contact page.
-
-### `/gallery` (Portfolio)
-*   **Filter/Nav:** Minimal text links to filter by category (e.g., *All, Action, Portraits, Team*).
-*   **The Exhibition Grid:** A massive masonry or offset grid.
-*   **Interaction:** Images load via fade-in. On hover, they snap from B&W to full color (as per style guide). Clicking an image opens a sleek, dark-mode lightbox.
-
-### `/about` (The Photographer)
-*   **Layout:** Extreme asymmetry. A large, bold, high-contrast portrait of the photographer in action on one side.
-*   **Biography:** Set in `Inter`, highly readable, with large pull-quotes in `Montserrat`.
-*   **Services Listing:** Clean bullet points detailing what the photographer shoots.
-
-### `/contact` (Booking)
-*   **Layout:** Split screen or centered stark layout.
-*   **Form:** Utilitarian, sharp-cornered input fields (0px radius). Ghost button for submission ("SEND MESSAGE").
-*   **Direct Links:** Clean typography listing direct email and social media handles.
+The scrolling site is the landing page (and all there is when WebGL is unavailable); `/#walk` opens straight into the gallery. The old URLs (`/grads.html`, `/films.html`, …) redirect
+to the matching room.
