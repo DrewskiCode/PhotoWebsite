@@ -536,6 +536,10 @@ export async function createGallery(canvas, { mobile = false, onProgress = () =>
     return [x0, y0, x1, y1];
   }
   function updateTarget() {
+    if (tour.on) {                           // the tour decides what is in front of you
+      if (lastTarget !== 'tour') { lastTarget = 'tour'; target = null; events.target?.(null); }
+      return;
+    }
     target = input.enabled ? findTarget() : null;
     const rect = target ? screenRect(target.q) : null;
     const key = target && rect ? target.q.id + target.verb + rect.map((v) => v | 0).join() : '';
@@ -544,6 +548,12 @@ export async function createGallery(canvas, { mobile = false, onProgress = () =>
     events.target?.(target && rect ? { id: target.q.id, type: target.type, verb: target.verb, rect, q: target.q } : null);
   }
   function use() {
+    if (tour.on) {
+      const s = tour.stops[tour.index];
+      if (s.type === 'screen') events.open?.('film', s.q.film);
+      else if (s.type === 'hot') events.open?.(s.q.action);
+      return;
+    }
     if (focus) return focusOn(null);
     const t = target || findTarget();
     if (!t) return;
@@ -568,9 +578,40 @@ export async function createGallery(canvas, { mobile = false, onProgress = () =>
     }
   }
 
+  // ---- guided tour (phones): every room, then every print in it, in lap order
+  const tour = { stops: [], index: 0, on: false, live: false };
+  {
+    const hot = (id) => labels.find((l) => l.id === id);
+    for (const r of layout.rooms) {
+      if (r.id === 'court') continue;
+      tour.stops.push({ type: 'room', room: r.id });
+      if (r.id === 'atrium') { const a = hot('about'); if (a) tour.stops.push({ type: 'hot', q: a, verb: VERB.about }); continue; }
+      for (const q of photos) if (q.room === r.id) tour.stops.push({ type: 'photo', q });
+      for (const q of screens) if (q.room === r.id) tour.stops.push({ type: 'screen', q, verb: VERB.screen });
+      if (r.id === 'awards') { const m = hot('aw:5'); if (m) tour.stops.push({ type: 'hot', q: { ...m, w: 2.8, h: 1.5 }, verb: VERB.awards }); }
+    }
+    const desk = hot('contact');
+    if (desk) tour.stops.push({ type: 'hot', q: desk, verb: VERB.contact });   // the lap ends at the desk
+  }
+  function tourGo(i) {
+    i = Math.max(0, Math.min(tour.stops.length - 1, i));
+    tour.index = i;
+    const s = tour.stops[i];
+    if (s.type === 'room') { focusOn(null); player.lift = 0; player.goRoom(s.room); }
+    else if (s.type === 'photo') focusOn(s.q);
+    else {                                   // a screen, the awards, the portrait, the desk: stand in front of it
+      focusOn(null);
+      const { pt, dist } = standPoint(s.q);
+      player.lift = Math.max(-0.15, s.q.p[1] - 1.66);
+      player.go(pt, { room: s.q.room, yaw: yawTo(-s.q.n[0], -s.q.n[2]), pitch: Math.atan2(s.q.p[1] - 1.66 - player.lift, dist) });
+    }
+    dirty = true;
+    events.tour?.({ index: i, count: tour.stops.length, type: s.type, verb: s.verb || null });
+  }
+
   // ---- input
   const input = new Input(canvas, {
-    onTap: (pt) => act(pt),
+    onTap: (pt) => { if (!tour.on) act(pt); },
     onKey: (code) => {
       if (code.startsWith('Digit')) { const r = layout.rooms[+code.slice(5)]; if (r) api.goRoom(r.id); }
       else if (code === 'BracketRight' || code === 'KeyN' || code === 'Period') stepFocus(1);
@@ -591,6 +632,7 @@ export async function createGallery(canvas, { mobile = false, onProgress = () =>
     if (id !== hoverId) { hoverId = id; dirty = true; events.hover?.(h && h.type !== 'floor' ? h : null); }
   };
   input.onStick = (...a) => events.stick?.(...a);
+  input.onSwipe = (dir) => { if (tour.on && tour.live) tourGo(tour.index + dir); };
 
   // ---- loop
   let last = 0, lastRoom = null, slow = 0, fast = 0, frames = 0;
@@ -629,6 +671,17 @@ export async function createGallery(canvas, { mobile = false, onProgress = () =>
     stop() { running = false; },
     enable(on) { input.enabled = on; dirty = true; lastTarget = '~'; },
     use,
+    tour: {
+      get count() { return tour.stops.length; },
+      get index() { return tour.index; },
+      enter() { tour.on = true; tour.live = false; input.tour = true; lastTarget = '~'; tourGo(0); },      // wait at the entrance for Start
+      begin() { tour.live = true; tourGo(Math.max(1, tour.index)); },
+      go: (i) => { tour.live = true; tourGo(i); },
+      next: () => tourGo(tour.index + 1),
+      prev: () => tourGo(tour.index - 1),
+      goRoom(id) { const i = tour.stops.findIndex((s) => s.type === 'room' && s.room === id); if (i >= 0) { tour.live = true; tourGo(i); } },
+      leave() { tour.on = tour.live = false; input.tour = false; lastTarget = '~'; },
+    },
     lock() { input.lock(); }, unlock() { input.unlock(); },
     nudge(x, y) { if (nudge[0] !== x || nudge[1] !== y) { nudge[0] = x; nudge[1] = y; dirty = true; } },
     goRoom(id) { focusOn(null); player.goRoom(id); dirty = true; },

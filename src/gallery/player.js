@@ -350,7 +350,7 @@ export class Input {
 
   touchStart(e) {
     const r = this.el.getBoundingClientRect();
-    const left = e.clientX < r.width * 0.42 && e.clientY > r.height * 0.4;
+    const left = !this.tour && e.clientX < r.width * 0.42 && e.clientY > r.height * 0.4;
     const t = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, t: performance.now(), moved: 0, stick: left && !this.stick };
     this.touches.set(e.pointerId, t);
     if (t.stick) { this.stick = t; this.onStick?.(t.sx, t.sy, 0, 0, true); }
@@ -369,7 +369,7 @@ export class Input {
       if (l > m) { ox *= m / l; oy *= m / l; }
       this.stickX = ox / m; this.stickZ = -oy / m;
       this.onStick?.(t.sx, t.sy, ox, oy, true);
-    } else if (t.moved > 6) {
+    } else if (!this.tour && t.moved > 6) {
       this.lookX -= dx * 0.0052; this.lookY -= dy * 0.0052;
     }
     this.onActivity();
@@ -382,6 +382,11 @@ export class Input {
     if (t.stick) {
       this.stick = null; this.stickX = this.stickZ = 0; this.onStick?.(0, 0, 0, 0, false);
       if (t.moved > 8) return;
+    }
+    if (this.tour) {                         // guided tour: a sideways swipe is the only gesture
+      const dx = e.clientX - t.sx, dy = e.clientY - t.sy;
+      if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy) * 1.2) this.onSwipe?.(dx < 0 ? 1 : -1);
+      return;
     }
     if (t.moved <= 8 && performance.now() - t.t < 450) this.onTap([e.clientX, e.clientY]);
   }

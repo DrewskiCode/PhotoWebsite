@@ -222,6 +222,25 @@ html.nolock:not(.touch) .for-drag { display: inline; }
 #stick::before { content: ""; position: absolute; left: -56px; top: -56px; width: 112px; height: 112px; border: 1.5px solid rgba(255, 255, 255, 0.85); border-radius: 50%; background: rgba(20, 20, 21, 0.2); }
 #stick i { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border-radius: 50%; background: #fff; }
 
+/* guided tour (phones): Start, then swipe. A thin line shows how far round the lap you are */
+#tour { inset: 0; pointer-events: none; display: none; }
+html.tour #tour { display: block; }
+#tour > * { position: absolute; left: 50%; transform: translateX(-50%); }
+#tour .btn { bottom: calc(max(24px, env(safe-area-inset-bottom)) + 28px); pointer-events: auto; transition: opacity 200ms var(--ease), transform 150ms var(--ease); }
+html.touring #tour .btn { opacity: 0; pointer-events: none; }
+.tour-hint { bottom: calc(max(24px, env(safe-area-inset-bottom)) + 96px); padding: 8px 14px; border-radius: 10px; background: rgba(20, 20, 21, 0.82); color: var(--text); font-size: 13px; white-space: nowrap; transition: opacity 400ms var(--ease); }
+html.touring:not(.swipe-hint) .tour-hint { opacity: 0; }
+html.touring .tour-hint { bottom: calc(max(24px, env(safe-area-inset-bottom)) + 28px); }
+.tour-bar { bottom: max(14px, env(safe-area-inset-bottom)); width: calc(100% - 48px); height: 2px; border-radius: 1px; background: rgba(255, 255, 255, 0.28); overflow: hidden; opacity: 0; transition: opacity 300ms var(--ease); mix-blend-mode: difference; }
+html.touring .tour-bar { opacity: 1; }
+.tour-bar b { display: block; height: 100%; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform 500ms var(--ease); }
+html.tour #howto, html.tour #stick, html.tour #brackets { display: none; }
+html.tour #prompt { bottom: calc(max(24px, env(safe-area-inset-bottom)) + 20px); }
+html.tour:not(.touring) #prompt, html.tour.swipe-hint #prompt { display: none; }
+html.tour #caption { bottom: calc(max(24px, env(safe-area-inset-bottom)) + 16px); left: 16px; right: 16px; max-width: none; }
+html.tour #roomname { bottom: calc(max(24px, env(safe-area-inset-bottom)) + 148px); left: 0; right: 0; text-align: center; }
+html.tour.touring #roomname { bottom: calc(max(24px, env(safe-area-inset-bottom)) + 76px); left: 24px; right: auto; text-align: left; }
+
 /* the shutter: one blink covers every cut between the site and the gallery */
 #shutter { position: fixed; inset: 0; z-index: 50; background: var(--deep); opacity: 0; pointer-events: none; transition: opacity 220ms var(--ease); }
 html.shut #shutter { opacity: 1; }
